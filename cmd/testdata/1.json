@@ -1,0 +1,66 @@
+{
+    "resolution": {
+        "bin": "create-react-app",
+        "npm": "create-react-app",
+        "github": "facebook/create-react-app"
+    },
+    "keywords": [
+        "react",
+        "create",
+        "boilerplate",
+        "scaffold",
+        "webpack",
+        "project"
+    ],
+    "inputs": {
+        "args": [
+            {
+                "description": "App name",
+                "type": "string",
+                "isRequired": true
+            }
+        ],
+        "flags": [
+            {
+                "description": "Template name",
+                "short": null,
+                "long": "template",
+                "type": "string",
+                "isRequired": false,
+                "default": null
+            }
+        ]
+    },
+    "recipes": [
+        {
+            "description": "Create React app with no build configuration",
+            "keywords": [],
+            "inputs": {}
+        },
+        {
+            "description": "Create React app with no build configuration using TypeScript",
+            "keywords": [
+                "typescript"
+            ],
+            "inputs": {
+                "args": [
+                    {
+                        "description": "App name",
+                        "type": "string",
+                        "isRequired": true
+                    }
+                ],
+                "flags": [
+                    {
+                        "description": "Template name",
+                        "short": null,
+                        "long": "template",
+                        "type": "string",
+                        "isRequired": false,
+                        "default": null
+                    }
+                ]
+            }
+        }
+    ]
+}
