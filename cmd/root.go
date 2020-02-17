@@ -80,6 +80,7 @@ func (c *rootCmd) run() error {
 	recipe := res.Recipes[index]
 
 	// check if the binary is installed
+	install := false
 	command := ""
 	exists := c.checkInstalled("foobar")
 	if !exists {
@@ -88,8 +89,7 @@ func (c *rootCmd) run() error {
 		input.Scan()
 		choice = input.Text()
 		if choice == "Y" || choice == "y" {
-			// Run command
-			fmt.Printf("Installing '%s'\n", res.Resolution.Bin)
+			install = true
 		} else {
 			command = "npx"
 		}
@@ -124,6 +124,14 @@ func (c *rootCmd) run() error {
 		}
 		commandArgs = append(commandArgs, flag.Long)
 		commandArgs = append(commandArgs, "--"+value)
+	}
+
+	if install {
+		fmt.Printf("Installing '%s' before running..\n", res.Resolution.Bin)
+		err = execute("npm", "install", "-g", res.Resolution.Bin)
+		if err != nil {
+			return err
+		}
 	}
 
 	if command == "" {

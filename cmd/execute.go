@@ -18,7 +18,7 @@ func execute(bin string, args ...string) error {
 	var wg sync.WaitGroup
 
 	cmd := exec.Command(bin, args...)
-	cmd.String()
+	fmt.Printf("Running: %s", cmd.String())
 
 	// pipe StdOut to stdout
 	stdOut, err := cmd.StdoutPipe()
